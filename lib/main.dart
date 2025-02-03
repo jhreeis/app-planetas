@@ -38,10 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _lerPlanetas();
+    _atualizarPlanetas();
   }
 
-  Future<void> _lerPlanetas() async {
+  Future<void> _atualizarPlanetas() async {
     final resultado = await _controlePlaneta.lerPlanetas();
     setState(() {
       _planetas = resultado;
@@ -53,17 +53,32 @@ class _MyHomePageState extends State<MyHomePage> {
       context,
       MaterialPageRoute(
         builder: (context) => TelaPlaneta(
+          planeta: Planeta.vazio(),
           onFinalizado: () {
-            _lerPlanetas();
+            _atualizarPlanetas();
           },
         ),
       ),
     );
   }
 
-  void _excluirPlaneta(int id) async { 
+  void _alterarPlaneta(BuildContext context, Planeta planeta) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TelaPlaneta(
+          planeta: planeta,
+          onFinalizado: () {
+            _atualizarPlanetas();
+          },
+        ),
+      ),
+    );
+  }
+
+  void _excluirPlaneta(int id) async {
     await _controlePlaneta.excluirPlaneta(id);
-    _lerPlanetas();
+    _atualizarPlanetas();
   }
 
   @override
@@ -79,10 +94,19 @@ class _MyHomePageState extends State<MyHomePage> {
           final planeta = _planetas[index];
           return ListTile(
             title: Text(planeta.nome),
-            subtitle: Text(planeta.distancia.toString()),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () => {}, // _excluirPlaneta(planeta.id!),
+            subtitle: Text(planeta.apelido!),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () => _excluirPlaneta(planeta.id!),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed: () => _alterarPlaneta(context, planeta),
+                )
+              ],
             ),
           );
         },

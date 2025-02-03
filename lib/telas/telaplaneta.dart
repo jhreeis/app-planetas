@@ -3,9 +3,11 @@ import '../controles/controleplaneta.dart';
 import '../modulos/planeta.dart';
 
 class TelaPlaneta extends StatefulWidget {
+  final Planeta planeta;
   final Function() onFinalizado;
   const TelaPlaneta({
     super.key,
+    required this.planeta,
     required this.onFinalizado,
   });
 
@@ -15,23 +17,32 @@ class TelaPlaneta extends StatefulWidget {
 
 class _TelaPlanetaState extends State<TelaPlaneta> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _nameController2 = TextEditingController();
+  
+  final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _distanciaController = TextEditingController();
+  final TextEditingController _tamanhoController = TextEditingController();
+  final TextEditingController _apelidoController = TextEditingController();
 
   final ControlePlaneta _controlePlaneta = ControlePlaneta();
-  final Planeta _planeta = Planeta.vazio();
+  
+  late Planeta _planeta;
 
   @override
   void initState() {
-    _nameController.text = '1';
-    _nameController2.text = '1';
+    _planeta = widget.planeta;
+    _nomeController.text = _planeta.nome;
+    _tamanhoController.text = _planeta.tamanho.toString();
+    _distanciaController.text = _planeta.distancia.toString();
+    _apelidoController.text = _planeta.apelido ?? '';
     super.initState();
   }
 
   @override
   void dispose() {
-    _nameController.dispose();
-    _nameController2.dispose();
+    _nomeController.dispose();
+    _tamanhoController.dispose();
+    _distanciaController.dispose();
+    _apelidoController.dispose();
     super.dispose();
   }
 
@@ -94,7 +105,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: _nameController,
+                  controller: _nomeController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
@@ -117,7 +128,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: _nameController2,
+                  controller: _tamanhoController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
