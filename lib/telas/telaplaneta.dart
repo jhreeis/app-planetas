@@ -67,7 +67,8 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
       }
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Planeta ${widget.isIncluir ? 'cadastrado' : 'alterado'} com sucesso!'),
+          content: Text(
+              'Planeta ${widget.isIncluir ? 'cadastrado' : 'alterado'} com sucesso!'),
         ),
       );
 
@@ -181,16 +182,32 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                   },
                 ),
                 const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: _submitForm,
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Salvar'),
-                      SizedBox(width: 8),
-                      Icon(Icons.check_circle),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _submitForm,
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('Salvar'),
+                          SizedBox(width: 8),
+                          Icon(Icons.check_circle),
+                        ],
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('Cancelar'),
+                          SizedBox(width: 8),
+                          Icon(Icons.cancel),
+                        ],
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
