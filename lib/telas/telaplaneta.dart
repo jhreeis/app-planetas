@@ -65,14 +65,9 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
       } else {
         _alterarPlaneta();
       }
-
-      _inserirPlaneta();
-
-      _alterarPlaneta();
-
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Planeta cadastrado com sucesso!'),
+        SnackBar(
+          content: Text('Planeta ${widget.isIncluir ? 'cadastrado' : 'alterado'} com sucesso!'),
         ),
       );
 
@@ -138,6 +133,9 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                     if (double.tryParse(value) == null) {
                       return 'Tamanho inválido. Insira um valor válido.';
                     }
+                    if (double.parse(value) <= 0) {
+                      return 'O tamanho deve ser maior que zero.';
+                    }
                     return null;
                   },
                   onSaved: (value) {
@@ -160,6 +158,9 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                     }
                     if (double.tryParse(value) == null) {
                       return 'Distância inválida. Insira um valor válido.';
+                    }
+                    if (double.parse(value) <= 0) {
+                      return 'A distância deve ser maior que zero.';
                     }
                     return null;
                   },
