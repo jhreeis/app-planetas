@@ -61,6 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _excluirPlaneta(int id) async { 
+    await _controlePlaneta.excluirPlaneta(id);
+    _lerPlanetas();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListTile(
             title: Text(planeta.nome),
             subtitle: Text(planeta.distancia.toString()),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () => {}, // _excluirPlaneta(planeta.id!),
+            ),
           );
         },
       ),
