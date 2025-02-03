@@ -84,6 +84,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
               children: [
                 const SizedBox(height: 16),
                 TextFormField(
+                  controller: _nomeController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
@@ -105,7 +106,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: _nomeController,
+                  controller: _tamanhoController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
@@ -128,7 +129,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: _tamanhoController,
+                  controller: _distanciaController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
@@ -151,6 +152,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  controller: _apelidoController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25)),
