@@ -23,7 +23,7 @@ class ControlePlaneta {
 
   Future<void> _criarBD(Database bd, int versao) async {
     const sql = '''
-    CREATE TABLE; planetas (
+    CREATE TABLE planetas (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT NOT NULL,
       tamanho REAL NOT NULL,
