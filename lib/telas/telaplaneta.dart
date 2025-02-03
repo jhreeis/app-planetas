@@ -3,10 +3,12 @@ import '../controles/controleplaneta.dart';
 import '../modulos/planeta.dart';
 
 class TelaPlaneta extends StatefulWidget {
+  final bool isIncluir;
   final Planeta planeta;
   final Function() onFinalizado;
   const TelaPlaneta({
     super.key,
+    required this.isIncluir,
     required this.planeta,
     required this.onFinalizado,
   });
@@ -17,14 +19,14 @@ class TelaPlaneta extends StatefulWidget {
 
 class _TelaPlanetaState extends State<TelaPlaneta> {
   final _formKey = GlobalKey<FormState>();
-  
+
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _distanciaController = TextEditingController();
   final TextEditingController _tamanhoController = TextEditingController();
   final TextEditingController _apelidoController = TextEditingController();
 
   final ControlePlaneta _controlePlaneta = ControlePlaneta();
-  
+
   late Planeta _planeta;
 
   @override
@@ -50,15 +52,30 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
     await _controlePlaneta.inserirPlaneta(_planeta);
   }
 
+  Future<void> _alterarPlaneta() async {
+    await _controlePlaneta.alterarPlaneta(_planeta);
+  }
+
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
+      if (widget.isIncluir) {
+        _inserirPlaneta();
+      } else {
+        _alterarPlaneta();
+      }
+
       _inserirPlaneta();
+
+      _alterarPlaneta();
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Planeta cadastrado com sucesso!'),
         ),
       );
+
       Navigator.of(context).pop();
       widget.onFinalizado();
     }

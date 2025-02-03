@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       context,
       MaterialPageRoute(
         builder: (context) => TelaPlaneta(
+          isIncluir: true,
           planeta: Planeta.vazio(),
           onFinalizado: () {
             _atualizarPlanetas();
@@ -67,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       context,
       MaterialPageRoute(
         builder: (context) => TelaPlaneta(
+          isIncluir: false,
           planeta: planeta,
           onFinalizado: () {
             _atualizarPlanetas();
