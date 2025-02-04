@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/telas/telaplaneta.dart';
 import 'controles/controleplaneta.dart';
 import 'modulos/planeta.dart';
+import 'telas/detalhes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -84,6 +85,16 @@ class _MyHomePageState extends State<MyHomePage> {
     _atualizarPlanetas();
   }
 
+  void _detalhes(id) {
+    final planeta = _planetas.firstWhere((planeta) => planeta.id == id);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TelaDeDetalhes(planeta: planeta),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,13 +113,17 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
+                  icon: const Icon(Icons.info),
+                  onPressed: () => _detalhes(planeta.id as int),
+                ),
+                IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () => _excluirPlaneta(planeta.id!),
                 ),
                 IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () => _alterarPlaneta(context, planeta),
-                )
+                ),
               ],
             ),
           );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../controles/controleplaneta.dart';
 import '../modulos/planeta.dart';
+import 'detalhes.dart';
 
 class TelaPlaneta extends StatefulWidget {
   final bool isIncluir;
@@ -28,6 +29,15 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
   final ControlePlaneta _controlePlaneta = ControlePlaneta();
 
   late Planeta _planeta;
+
+  void _detalhes() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TelaDeDetalhes(planeta: _planeta),
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -71,7 +81,6 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
               'Planeta ${widget.isIncluir ? 'cadastrado' : 'alterado'} com sucesso!'),
         ),
       );
-
       Navigator.of(context).pop();
       widget.onFinalizado();
     }
