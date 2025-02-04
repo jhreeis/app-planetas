@@ -81,8 +81,31 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _excluirPlaneta(int id) async {
-    await _controlePlaneta.excluirPlaneta(id);
-    _atualizarPlanetas();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Excluir Planeta'),
+          content: const Text('Tem certeza que deseja excluir este planeta?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Excluir'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await _controlePlaneta.excluirPlaneta(id);
+                _atualizarPlanetas();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _detalhes(id) {
