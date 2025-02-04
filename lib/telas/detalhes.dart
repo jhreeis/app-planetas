@@ -22,10 +22,15 @@ class TelaDeDetalhes extends StatelessWidget {
             _buildDetailRow('Apelido', '${planeta.apelido}'),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Voltar'),
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Voltar'),
+                  SizedBox(width: 8),
+                  Icon(Icons.arrow_back),
+                ],
+              ),
             ),
           ],
         ),
