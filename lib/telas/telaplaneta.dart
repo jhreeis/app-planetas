@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../controles/controleplaneta.dart';
 import '../modulos/planeta.dart';
-import 'detalhes.dart';
+import '../telas/detalhes.dart';
 
 class TelaPlaneta extends StatefulWidget {
   final bool isIncluir;
@@ -30,7 +30,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
 
   late Planeta _planeta;
 
-  void _detalhes() {
+  void detalhes() {
     Navigator.push(
       context,
       MaterialPageRoute(
