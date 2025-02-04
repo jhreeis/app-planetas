@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/modulos/planeta.dart';
 
+// Tela de detalhes do planeta
 class TelaDeDetalhes extends StatelessWidget {
   final Planeta planeta;
 
   const TelaDeDetalhes({super.key, required this.planeta});
 
+// Construtor da Tela de Detalhes do Planeta
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +41,7 @@ class TelaDeDetalhes extends StatelessWidget {
     );
   }
 
+// Widget para construir uma linha de detalhes
   Widget _buildDetailRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),

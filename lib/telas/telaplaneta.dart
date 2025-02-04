@@ -3,6 +3,7 @@ import '../controles/controleplaneta.dart';
 import '../modulos/planeta.dart';
 import '../telas/detalhes.dart';
 
+// Tela de Cadastro de Planetas
 class TelaPlaneta extends StatefulWidget {
   final bool isIncluir;
   final Planeta planeta;
@@ -18,6 +19,7 @@ class TelaPlaneta extends StatefulWidget {
   State<TelaPlaneta> createState() => _TelaPlanetaState();
 }
 
+// Estado da Tela de Cadastro de Planetas
 class _TelaPlanetaState extends State<TelaPlaneta> {
   final _formKey = GlobalKey<FormState>();
 
@@ -30,6 +32,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
 
   late Planeta _planeta;
 
+// Função que abre a tela de detalhes do planeta
   void detalhes() {
     Navigator.push(
       context,
@@ -86,6 +89,7 @@ class _TelaPlanetaState extends State<TelaPlaneta> {
     }
   }
 
+// Construtor da Tela de Cadastro de Planetas
   @override
   Widget build(BuildContext context) {
     return Scaffold(

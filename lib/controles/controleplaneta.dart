@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import '../modulos/planeta.dart';
 
+// Classe de Controle de Planetas com banco de dados SQLite e funções de manipulação dos dados
 class ControlePlaneta {
   static Database? _bd;
 

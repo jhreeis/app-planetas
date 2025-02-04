@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Criação da classe da Tela Principal
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -33,6 +34,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// Criação de estado da classe da Tela Principal
 class _MyHomePageState extends State<MyHomePage> {
   final ControlePlaneta _controlePlaneta = ControlePlaneta();
   List<Planeta> _planetas = [];
@@ -43,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _atualizarPlanetas();
   }
 
+// Função para atualizar a lista de planetas
   Future<void> _atualizarPlanetas() async {
     final resultado = await _controlePlaneta.lerPlanetas();
     setState(() {
@@ -50,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+// Função para inclusão de um novo planeta
   void _incluirPlaneta(BuildContext context) {
     Navigator.push(
       context,
@@ -65,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+// Função para alteração de um planeta
   void _alterarPlaneta(BuildContext context, Planeta planeta) {
     Navigator.push(
       context,
@@ -80,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+// Função para excluir um planeta (com mini tela de confirmação)
   void _excluirPlaneta(int id) async {
     showDialog(
       context: context,
@@ -96,9 +102,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TextButton(
               child: const Text('Excluir'),
-              onPressed: () async {
+              onPressed: ()  {
                 Navigator.of(context).pop();
-                await _controlePlaneta.excluirPlaneta(id);
+                _controlePlaneta.excluirPlaneta(id);
                 _atualizarPlanetas();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
@@ -114,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+// Função para abrir a tela de detalhes do planeta
   void _detalhes(id) {
     final planeta = _planetas.firstWhere((planeta) => planeta.id == id);
     Navigator.push(
@@ -124,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+// Construtor da Tela Principal
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,6 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+// Botão Flutuante de Inclusão
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _incluirPlaneta(context);
