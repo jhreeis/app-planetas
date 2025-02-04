@@ -100,6 +100,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.of(context).pop();
                 await _controlePlaneta.excluirPlaneta(id);
                 _atualizarPlanetas();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                        'Planeta excluído com sucesso!'),
+                  ),
+                );
               },
             ),
           ],
