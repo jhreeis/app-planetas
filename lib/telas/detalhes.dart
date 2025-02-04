@@ -20,6 +20,7 @@ class TelaDeDetalhes extends StatelessWidget {
             _buildDetailRow('Tamanho', '${planeta.tamanho} km'),
             _buildDetailRow('Distância', '${planeta.distancia} km'),
             _buildDetailRow('Apelido', '${planeta.apelido}'),
+            _buildDetailRow('ID', '${planeta.id}'),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
