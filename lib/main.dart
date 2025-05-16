@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('ALERTA EVASÃO'),
+        title: const Text('APP ALERTA EVASÃO'),
       ),
       body: ListView.builder(
         itemCount: _planetas.length,
