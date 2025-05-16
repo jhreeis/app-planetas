@@ -173,8 +173,8 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         tooltip: 'Increment',
         child: const Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [(Icon(Icons.add)), (Icon(Icons.public))]),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [(Icon(Icons.warning))]),
       ),
     );
   }
